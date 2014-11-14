@@ -1,0 +1,41 @@
+﻿@model Catalog1.Models.Article
+
+@{
+    ViewBag.Title = "Blog Post";
+}
+
+<h2>Blog Post</h2>
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-8">
+            <!-- Blog Post -->
+            <!-- Title -->
+            <h1>@Html.DisplayFor(model => model.Title)</h1>
+            <!-- Author -->
+            <p class="lead">
+                by <a href="#">@Html.DisplayFor(model => model.Author)</a>
+            </p>
+            <hr>
+            <!-- Date/Time -->
+            <p><span class="glyphicon glyphicon-time"></span> Posted on @Html.DisplayFor(model => model.TimeStamp)</p>
+            <hr>
+            <!-- Preview Image -->
+            <img class="img-responsive" src="@Html.DisplayFor(model => model.Image)" alt="">
+            <hr>
+            <!-- Post Content -->
+            <p class="lead">@Html.DisplayFor(model => model.Content)</p>
+            <hr>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID },
+                         new { @class = "btn btn-primary" })
+            </p>
+            <p>
+                @Html.ActionLink("Back to List", "Index", null,
+                         new { @class = "btn btn-default" })
+            </p>
+        </div>
+    </div>
+</div>

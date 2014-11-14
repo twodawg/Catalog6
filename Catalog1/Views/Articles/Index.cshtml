@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Catalog1.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            @foreach (var item in Model)
+            {
+                <h1 class="page-header">
+                    Widget Blog
+                    <small>A wonderful blog</small>
+                </h1>
+            <!-- First Blog Post -->
+                <h2>
+                    <a href="#">@Html.DisplayFor(modelItem => item.Title)</a>
+                </h2>
+                <p class="lead">
+                    by <a href="#">@Html.DisplayFor(modelItem => item.Author)</a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on @Html.DisplayFor(modelItem => item.TimeStamp)</p>
+                <hr>
+                <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.Image)" alt="">
+                <hr>
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                <p>
+                    @Html.ActionLink("Read More", "Details",
+                                    new { id = item.ArticleID }, new { @class = "btn btn-primary" })
+                </p>
+                <p>
+                    @Html.ActionLink("Edit", "Edit",
+                      new { id = item.ArticleID }, new { @class = "btn btn-default" })
+                </p>
+                <hr>
+            }
+        </div>
+    </div>
+</div>
